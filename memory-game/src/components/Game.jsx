@@ -1,6 +1,7 @@
+"use client";
 import { useState, useEffect } from "react";
 import toastr from "toastr";
-
+import Header from "../components/Header.jsx";
 import "./Game.css";
 toastr.options = {
   closeButton: true,
@@ -111,43 +112,48 @@ function Game() {
   }, []);
 
   return (
-    <div className="game-container">
-      <div className="card-header">
-        <h4 className="counter">Points:{points}</h4>
-        <p className="flip-counter">Coups:{Math.floor(flips / 2)}</p>
-        <button onClick={startOver} className="button-start-over">
-          Start over
-        </button>
+    <div>
+      <div className="header">
+        <Header />
       </div>
-      <div className="card-container">
-        {imagesArray?.map((imageObj, index) => {
-          return (
-            <div
-              className="col-4 col-lg-2"
-              key={index}
-              onClick={() => flipImage(imageObj.image, index)}
-            >
-              <div className="card">
-                <div className="card-body">
-                  <p className="card-text text-center">
-                    {isCardChosen(imageObj.name, index) ? imageObj.name : ""}
-                  </p>
-                  <img
-                    src={
-                      isCardChosen(imageObj.image, index)
-                        ? imageObj.image
-                        : BLANK_CARD
-                    }
-                    alt={
-                      isCardChosen(imageObj.name, index) ? imageObj.name : ""
-                    }
-                    className={`img-fluid img-fixed`}
-                  />
+      <div className="game-container">
+        <div className="card-header">
+          <h4 className="counter">Points:{points}</h4>
+          <p className="flip-counter">Coups:{Math.floor(flips / 2)}</p>
+          <button onClick={startOver} className="button-start-over">
+            Start over
+          </button>
+        </div>
+        <div className="card-container">
+          {imagesArray?.map((imageObj, index) => {
+            return (
+              <div
+                className="col-4 col-lg-2"
+                key={index}
+                onClick={() => flipImage(imageObj.image, index)}
+              >
+                <div className="card">
+                  <div className="card-body">
+                    <p className="card-text text-center">
+                      {isCardChosen(imageObj.name, index) ? imageObj.name : ""}
+                    </p>
+                    <img
+                      src={
+                        isCardChosen(imageObj.image, index)
+                          ? imageObj.image
+                          : BLANK_CARD
+                      }
+                      alt={
+                        isCardChosen(imageObj.name, index) ? imageObj.name : ""
+                      }
+                      className={`img-fluid img-fixed`}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );
