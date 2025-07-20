@@ -1,4 +1,4 @@
-@import "~toastr/build/toastr.css";
+@import "toastr/build/toastr.css";
 .card-container {
   display: flex;
   flex-wrap: wrap;

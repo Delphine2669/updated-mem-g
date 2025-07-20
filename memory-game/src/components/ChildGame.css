@@ -1,4 +1,4 @@
-@import "~toastr/build/toastr.css";
+@import "toastr/build/toastr.css";
 
 .child-card-container {
   display: flex;
