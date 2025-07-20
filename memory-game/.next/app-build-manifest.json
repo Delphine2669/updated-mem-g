@@ -12,17 +12,10 @@
       "static/css/app/page.css",
       "static/chunks/app/page.js"
     ],
-    "/level1/page": [
+    "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/level1/page.css",
-      "static/chunks/app/level1/page.js"
-    ],
-    "/level2/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/level2/page.css",
-      "static/chunks/app/level2/page.js"
+      "static/chunks/app/_not-found/page.js"
     ]
   }
 }
