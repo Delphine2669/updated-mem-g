@@ -3,35 +3,19 @@ import { useState, useEffect } from "react";
 import toastr from "toastr";
 import Header from "../components/Header.jsx";
 import "./Game.css";
-toastr.options = {
-  closeButton: true,
-  debug: false,
-  newestOnTop: false,
-  progressBar: true,
-  positionClass: "toast-top-center",
-  preventDuplicates: false,
-  onclick: null,
-  showDuration: "300",
-  hideDuration: "1000",
-  timeOut: "5000",
-  extendedTimeOut: "1000",
-  showEasing: "swing",
-  hideEasing: "linear",
-  showMethod: "fadeIn",
-  hideMethod: "fadeOut",
-};
+
 function Game() {
-  const BLANK_CARD = "assets/GoT/throne.jpeg";
+  const BLANK_CARD = "/assets/GoT/throne.jpeg";
 
   const images = [
-    { name: "Arya", image: "assets/GoT/Arya.png" },
-    { name: "Cersei", image: "assets/GoT/cersei.png" },
-    { name: "Daenerys", image: "assets/GoT/daenerys.png" },
-    { name: "Jon Snow", image: "assets/GoT/johnSnow.png" },
-    { name: "Khal Drogo", image: "assets/GoT/khaldrogo.png" },
-    { name: "Sansa", image: "assets/GoT/sansa.png" },
-    { name: "Tyrion", image: "assets/GoT/tyrion.png" },
-    { name: "Brienne", image: "assets/GoT/brienne.png" },
+    { name: "Arya", image: "/assets/GoT/Arya.png" },
+    { name: "Cersei", image: "/assets/GoT/cersei.png" },
+    { name: "Daenerys", image: "/assets/GoT/daenerys.png" },
+    { name: "Jon Snow", image: "/assets/GoT/johnSnow.png" },
+    { name: "Khal Drogo", image: "/assets/GoT/khaldrogo.png" },
+    { name: "Sansa", image: "/assets/GoT/sansa.png" },
+    { name: "Tyrion", image: "/assets/GoT/tyrion.png" },
+    { name: "Brienne", image: "/assets/GoT/brienne.png" },
   ];
   const [points, setPoints] = useState(0);
   const [chosenCards, setChosenCards] = useState([]);
@@ -61,7 +45,7 @@ function Game() {
         if (chosenCards[0] === image) {
           setPoints((points) => points + 2);
           setOpenCards((openCards) =>
-            openCards?.concat([chosenCards[0], image])
+            openCards?.concat([chosenCards[0], image]),
           );
           setPairsUncovered((pairsUncovered) => pairsUncovered + 1);
         }
@@ -69,7 +53,7 @@ function Game() {
           let message;
           if (flips % 2 === 0) {
             message = `💪🏾Bravo. Rejoue et essaye de le faire en moins de ${Math.floor(
-              flips / 2
+              flips / 2,
             )} coups`;
           } else {
             message = `💪🏾 Bravo. Rejoue et essaye de le faire en moins de ${
@@ -84,6 +68,24 @@ function Game() {
         }, 700);
       }
     }
+    useEffect(() => {
+      toastr.options = {
+        closeButton: false,
+        debug: false,
+        newestOnTop: false,
+        progressBar: true,
+        positionClass: "toast-top-center",
+        preventDuplicates: true,
+        showDuration: "300",
+        hideDuration: "1000",
+        timeOut: "5000",
+        extendedTimeOut: "1000",
+        showEasing: "swing",
+        hideEasing: "linear",
+        showMethod: "fadeIn",
+        hideMethod: "fadeOut",
+      };
+    }, []);
   }
   function isCardChosen(image, index) {
     return chosenCardsIds?.includes(index) || openCards?.includes(image);

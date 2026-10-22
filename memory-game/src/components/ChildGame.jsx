@@ -3,31 +3,16 @@ import { useState, useEffect } from "react";
 import toastr from "toastr";
 import Header from "./Header";
 import "./ChildGame.css";
-toastr.options = {
-  closeButton: false,
-  debug: false,
-  newestOnTop: false,
-  progressBar: true,
-  positionClass: "toast-top-center",
-  preventDuplicates: true,
-  showDuration: "300",
-  hideDuration: "1000",
-  timeOut: "5000",
-  extendedTimeOut: "1000",
-  showEasing: "swing",
-  hideEasing: "linear",
-  showMethod: "fadeIn",
-  hideMethod: "fadeOut",
-};
+
 function ChildGame() {
-  const BLANK_CARD = "assets/Kids/balloon.avif";
+  const BLANK_CARD = "/assets/Kids/balloon.avif";
 
   const images = [
-    { name: "Rond", image: "assets/Kids/circle.png" },
-    { name: "Coeur", image: "assets/Kids/heart.png" },
-    { name: "Carré", image: "assets/Kids/square.png" },
-    { name: "Etoile", image: "assets/Kids/star.png" },
-    { name: "Triangle", image: "assets/Kids/triangle.png" },
+    { name: "Rond", image: "/assets/Kids/circle.png" },
+    { name: "Coeur", image: "/assets/Kids/heart.png" },
+    { name: "Carré", image: "/assets/Kids/square.png" },
+    { name: "Etoile", image: "/assets/Kids/star.png" },
+    { name: "Triangle", image: "/assets/Kids/triangle.png" },
   ];
   const [points, setPoints] = useState(0);
   const [chosenCards, setChosenCards] = useState([]);
@@ -57,7 +42,7 @@ function ChildGame() {
         if (chosenCards[0] === image) {
           setPoints((points) => points + 2);
           setOpenCards((openCards) =>
-            openCards?.concat([chosenCards[0], image])
+            openCards?.concat([chosenCards[0], image]),
           );
           setPairsUncovered((pairsUncovered) => pairsUncovered + 1);
         }
@@ -65,7 +50,7 @@ function ChildGame() {
           let message;
           if (flips % 2 === 0) {
             message = `Bravo tu as retrouvé tous les symboles 🎊 en ${Math.floor(
-              flips / 2
+              flips / 2,
             )} coups`;
           } else {
             message = `Bravo tu as retrouvé tous les symboles 🎊 en ${
@@ -80,6 +65,24 @@ function ChildGame() {
         }, 700);
       }
     }
+    useEffect(() => {
+      toastr.options = {
+        closeButton: false,
+        debug: false,
+        newestOnTop: false,
+        progressBar: true,
+        positionClass: "toast-top-center",
+        preventDuplicates: true,
+        showDuration: "300",
+        hideDuration: "1000",
+        timeOut: "5000",
+        extendedTimeOut: "1000",
+        showEasing: "swing",
+        hideEasing: "linear",
+        showMethod: "fadeIn",
+        hideMethod: "fadeOut",
+      };
+    }, []);
   }
 
   function isCardChosen(image, index) {
