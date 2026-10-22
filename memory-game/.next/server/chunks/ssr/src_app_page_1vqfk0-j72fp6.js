@@ -1,0 +1,3 @@
+module.exports=[85690,a=>{"use strict";var b=a.i(3888),c=a.i(54014);a.i(80897);var d=a.i(13674);a.s(["default",0,function(){return(0,b.jsxs)("div",{children:[(0,b.jsx)("div",{className:"header",children:(0,b.jsx)(d.f,{})}),(0,b.jsxs)("nav",{children:[(0,b.jsx)(c.default,{href:"/level1",className:"home-navlink",children:"Level 1"}),(0,b.jsx)(c.default,{href:"/level2",className:"home-navlink",children:"Level 2"})]})]})}])}];
+
+//# sourceMappingURL=src_app_page_1vqfk0-j72fp6.js.map

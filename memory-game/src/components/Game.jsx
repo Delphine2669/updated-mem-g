@@ -1,10 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
-import toastr from "toastr";
+
 import Header from "../components/Header.jsx";
 import "./Game.css";
 
 function Game() {
+  const [toast, setToast] = useState(null);
+
   const BLANK_CARD = "/assets/GoT/throne.jpeg";
 
   const images = [
@@ -69,21 +71,34 @@ function Game() {
       }
     }
     useEffect(() => {
-      toastr.options = {
-        closeButton: false,
-        debug: false,
-        newestOnTop: false,
-        progressBar: true,
-        positionClass: "toast-top-center",
-        preventDuplicates: true,
-        showDuration: "300",
-        hideDuration: "1000",
-        timeOut: "5000",
-        extendedTimeOut: "1000",
-        showEasing: "swing",
-        hideEasing: "linear",
-        showMethod: "fadeIn",
-        hideMethod: "fadeOut",
+      let cancelled = false;
+      import("toastr")
+        .then(({ default: toastr }) => {
+          if (cancelled) return;
+
+          toastr.options = {
+            closeButton: false,
+            debug: false,
+            newestOnTop: false,
+            progressBar: true,
+            positionClass: "toast-top-center",
+            preventDuplicates: true,
+            showDuration: "300",
+            hideDuration: "1000",
+            timeOut: "5000",
+            extendedTimeOut: "1000",
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",
+            hideMethod: "fadeOut",
+          };
+          setToast(toastr);
+        })
+        .catch((error) => {
+          console.error("Failed toastr:", error);
+        });
+      return () => {
+        cancelled = truel;
       };
     }, []);
   }
