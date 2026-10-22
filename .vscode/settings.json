@@ -9,10 +9,11 @@
         "statusBar.debuggingBackground": "#ffff00",
         "statusBar.debuggingBorder": "#ffff00",
         "statusBarItem.hoverBackground": "#3333ff",
-        "statusBarItem.remoteBackground": "#0000ff",
+        "statusBarItem.remoteBackground": "#400000",
         "tab.activeBorder": "#3333ff",
         "titleBar.activeBackground": "#0000ff",
         "titleBar.border": "#0000ff",
-        "titleBar.inactiveBackground": "#0000ff99"
+        "titleBar.inactiveBackground": "#0000ff99",
+        "statusBar.inactiveBackground": "#0000ff"
     }
 }
