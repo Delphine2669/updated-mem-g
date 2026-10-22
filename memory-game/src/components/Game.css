@@ -9,7 +9,7 @@
 .game-container {
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("https://www.esportsportal.com/wp-content/uploads/2019/06/game-of-thrones-a-telltale-games-series-hd-wallpapers-33155-7585082.png");
+  background-image: url("../../public/assets/wall.jpg");
 }
 .img-fluid {
   width: 13dvw;
